@@ -1,7 +1,7 @@
 # PotentialFlowVisualizer (PFV)
 **By Peter Sharpe**
 
-*A fun, lightweight, tool to visualize potential flows quickly!*
+*A fun, lightweight tool to visualize potential flows quickly!*
 
 ## PFV Description
 PotentialFlowVisualizer is a convenient Python library that can be used to quickly visualize various potential flow fields. If you're new to potential flows, I've written a short intro at the bottom of this document.
