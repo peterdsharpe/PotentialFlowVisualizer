@@ -41,7 +41,7 @@ field.draw("streamfunction")
 ![Lifting Cylinder Flow](media/lifting_cylinder_flow.png)
 
 #### Nonlifting NACA0020
-Here, we use some key results of slender body theory to model a thin streamlined body.
+Here, we use some key results of slender body theory to (approximately) model a thin streamlined body.
 ```python
 from potentialflowvisualizer import *
 
