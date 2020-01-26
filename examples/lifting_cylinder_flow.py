@@ -10,6 +10,6 @@ field = Flowfield(
 
 # field.draw("potential")
 field.draw("streamfunction")
-field.draw("xvel")
-field.draw("yvel")
-field.draw("velmag")
+# field.draw("xvel")
+# field.draw("yvel")
+# field.draw("velmag")

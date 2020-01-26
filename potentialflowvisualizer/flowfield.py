@@ -1,5 +1,8 @@
 import numpy as np
 import plotly.graph_objects as go
+import plotly.io as pio
+
+pio.renderers.default = "browser" # Feel free to disable this if you're running in notebook mode or prefer a different frontend.
 
 
 class Flowfield:
@@ -9,11 +12,11 @@ class Flowfield:
         self.objects = objects
 
     def draw(self,
-                   scalar_to_plot="potential",  # "potential", "streamfunction", "xvel", "yvel", "velmag"
-                   x_points=np.linspace(-10, 10, 200),
-                   y_points=np.linspace(-10, 10, 200),
-                   show=True,
-                   ):
+             scalar_to_plot="potential",  # "potential", "streamfunction", "xvel", "yvel", "velmag"
+             x_points=np.linspace(-10, 10, 200),
+             y_points=np.linspace(-10, 10, 200),
+             show=True,
+             ):
         X, Y = np.meshgrid(x_points, y_points)
         X_r = np.reshape(X, -1)
         Y_r = np.reshape(Y, -1)
@@ -40,7 +43,6 @@ class Flowfield:
         if scalar_to_plot == "velmag":
             scalar_to_plot_value = np.sqrt(x_vels ** 2 + y_vels ** 2)
 
-
         # min = np.min(scalar_to_plot_value)
         # max = np.max(scalar_to_plot_value)
         min = np.nanpercentile(scalar_to_plot_value, 10)
@@ -56,7 +58,7 @@ class Flowfield:
                 contours=dict(
                     start=min,
                     end=max,
-                    size = (max-min) / 20
+                    size=(max - min) / 20
                 ),
                 colorbar=dict(
                     title=scalar_to_plot,
