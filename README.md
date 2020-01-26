@@ -4,28 +4,15 @@
 *A fun, lightweight, educational tool to visualize potential flows quickly!*
 
 ## PFV Description
-PotentialFlowVisualizer is a convenient Python library that can be used to quickly visualize various potential flow fields.
+PotentialFlowVisualizer is a convenient Python library that can be used to quickly visualize various potential flow fields. If you're new to potential flows, I've written a short intro at the bottom of this document.
 
-Syntax is explicitly designed to be concise and readable. Rendering of flow fields happens through Plot.ly's beautiful browser-based visualization tools. This library is designed to have minimal dependencies - it requires just NumPy and Plotly. 
+PFV syntax is explicitly designed to be concise and readable. Rendering of flow fields happens through Plot.ly's beautiful browser-based visualization tools. This library is designed to have minimal dependencies - it requires just NumPy and Plotly. 
 
-## Potential Flow: A 30-second Crash Course
-Potential flow is a model of how fluids behave under certain mathematically-convenient assumptions. Potential flows can be described by a short, elegant equation:
-
-<img src="https://render.githubusercontent.com/render/math?math=\nabla^2\phi=0">
-
-Here, <img src="https://render.githubusercontent.com/render/math?math=\phi"> is a scalar that represents the "velocity potential" at a given point - we use the word "potential", because it's sort of analogous to potential energy or a voltage potential. To find the velocity at a point, we look at the derivatives of the potential at that point:
-
-<img src="https://render.githubusercontent.com/render/math?math=\nabla\phi=\vec{V}">
-
-There are a few "fundamental solutions" to this governing equation - a few of these are shown below. The governing equation is linear, so we can superimpose various fundamental solutions until we obtain a flowfield that describes some physically-relevant situation.
-
-Because of this, potential flow is applicable to many common problems in aerodynamics and hydrodynamics. Furthermore, the ability to break complex flow fields into simple "fundamental solutions" allows engineers to gain an intuitive understanding of the physics at play - something that can be much more difficult with other, more complicated flow models.  
-
-##Examples
+## Examples
 
 Here are a few examples to show you how you might use PFV to look at basic flowfields:
 
-####Freestream, Source, and Sink (Rankine Oval)
+#### Freestream, Source, and Sink (Rankine Oval)
 ```python
 from potentialflowvisualizer import *
 
@@ -39,7 +26,7 @@ field.draw("streamfunction")
 ```
 ![Freestream Source Sink](media/freestream_source_sink.png)
 
-####Lifting Cylinder Flow
+#### Lifting Cylinder Flow
 ```python
 from potentialflowvisualizer import *
 
@@ -53,7 +40,7 @@ field.draw("streamfunction")
 ```
 ![Lifting Cylinder Flow](media/lifting_cylinder_flow.png)
 
-####Nonlifting NACA0020
+#### Nonlifting NACA0020
 Here, we use some key results of slender body theory to model a thin streamlined body.
 ```python
 from potentialflowvisualizer import *
@@ -87,7 +74,7 @@ field.draw("streamfunction") # And visualize it
 ![Nonlifting NACA0020 Flow](media/nonlifting_NACA0020.png)
 
 
-####Nonlifting NACA0020 at an Angle
+#### Nonlifting NACA0020 at an Angle
 To first order, we can model the flow around a NACA0020 section at an angle by adding doublets. (Note that the lack of net vorticity means that this is a nonlifting flow.) As we can see, slender body theory starts to break down a bit in this case.
 ```python
 from potentialflowvisualizer import *
@@ -125,6 +112,19 @@ field.objects.extend( # Add doublets to model crossflow
 field.draw("streamfunction") # And visualize it
 ```
 ![Nonlifting NACA0020 at angle](media/nonlifting_NACA0020_at_angle.png)
+
+## Potential Flow: A 30-second Crash Course
+Potential flow is a model of how fluids behave under certain mathematically-convenient assumptions. Potential flows can be described by a short, elegant equation:
+
+<img src="https://render.githubusercontent.com/render/math?math=\nabla^2\phi=0">
+
+Here, <img src="https://render.githubusercontent.com/render/math?math=\phi"> is a scalar that represents the "velocity potential" at a given point - we use the word "potential", because it's sort of analogous to potential energy or a voltage potential. To find the velocity at a point, we look at the derivatives of the potential at that point:
+
+<img src="https://render.githubusercontent.com/render/math?math=\nabla\phi=\vec{V}">
+
+There are a few "fundamental solutions" to this governing equation - a few of these are shown below. The governing equation is linear, so we can superimpose various fundamental solutions until we obtain a flowfield that describes some physically-relevant situation.
+
+Because of this, potential flow is applicable to many common problems in aerodynamics and hydrodynamics. Furthermore, the ability to break complex flow fields into simple "fundamental solutions" allows engineers to gain an intuitive understanding of the physics at play - something that can be much more difficult with other, more complicated flow models.  
 
 ## License
 MIT License
