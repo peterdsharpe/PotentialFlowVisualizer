@@ -118,7 +118,7 @@ Potential flow is a model of how fluids behave under certain mathematically-conv
 
 <img src="https://render.githubusercontent.com/render/math?math=\nabla^2\phi=0">
 
-Here, <img src="https://render.githubusercontent.com/render/math?math=\phi"> is a scalar that represents the "velocity potential" at a given point - we use the word "potential", because it's sort of analogous to potential energy or a voltage potential. To find the velocity at a point, we look at the derivatives of the potential at that point:
+Here, <img src="https://render.githubusercontent.com/render/math?math=\phi"> is a scalar that represents the "velocity potential" at a given point - we use the word "potential", because it's sort of analogous to potential energy or a voltage potential. To find the fluid's velocity at a point, we look at the derivatives of the potential at that point:
 
 <img src="https://render.githubusercontent.com/render/math?math=\nabla\phi=\vec{V}">
 
