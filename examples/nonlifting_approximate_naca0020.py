@@ -19,10 +19,11 @@ y = 0.2 * c * 10 * (
         + 0.2843 * ((x - x0) / c) ** 3
         - 0.1036 * ((x - x0) / c) ** 4
 )
+dx = np.diff(x)
 dy = np.diff(y)
 
 # Flow properties
-V = 1
+V = 100
 alpha = 10
 alpha_rad = np.radians(alpha)
 
@@ -34,7 +35,7 @@ field.objects.extend(
     [LineSource(V * dy[i], x[i], 0, x[i + 1], 0) for i in range(len(x) - 1)]
 )
 field.objects.extend(
-    [Doublet(2 * V * y[i] * alpha_rad, x[i], 0, np.radians(90)) for i in range(len(x))]
+    [Doublet(2 * V * y[i] * alpha_rad * dx[i], (x[i] + x[i+1])/2, 0, np.radians(90)) for i in range(len(x) - 1)]
 )
 
 field.draw("streamfunction")
