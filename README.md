@@ -6,7 +6,7 @@
 ## PFV Description
 PotentialFlowVisualizer is a convenient Python library that can be used to quickly visualize various potential flow fields. If you're new to potential flows, I've written a short intro at the bottom of this document.
 
-PFV syntax is explicitly designed to be concise and readable. Rendering of flow fields happens through Plot.ly's beautiful browser-based visualization tools. This library is designed to have minimal dependencies - it requires just NumPy and Plotly. 
+PFV syntax is explicitly designed to be concise and readable. Rendering of flow fields happens through Plot.ly's beautiful visualization tools. This library is designed to have minimal dependencies - it requires just NumPy and Plotly. 
 
 ## Examples
 
@@ -41,7 +41,7 @@ field.draw("streamfunction")
 ![Lifting Cylinder Flow](media/lifting_cylinder_flow.png)
 
 #### Nonlifting NACA0020
-Here, we use some key results of slender body theory to model a thin streamlined body.
+Here, we use some key results of slender body theory to (approximately) model a thin streamlined body.
 ```python
 from potentialflowvisualizer import *
 
@@ -118,7 +118,7 @@ Potential flow is a model of how fluids behave under certain mathematically-conv
 
 <img src="https://render.githubusercontent.com/render/math?math=\nabla^2\phi=0">
 
-Here, <img src="https://render.githubusercontent.com/render/math?math=\phi"> is a scalar that represents the "velocity potential" at a given point - we use the word "potential", because it's sort of analogous to potential energy or a voltage potential. To find the velocity at a point, we look at the derivatives of the potential at that point:
+Here, <img src="https://render.githubusercontent.com/render/math?math=\phi"> is a scalar that represents the "velocity potential" at a given point - we use the word "potential", because it's sort of analogous to potential energy or a voltage potential. To find the fluid's velocity at a point, we look at the derivatives of the potential at that point:
 
 <img src="https://render.githubusercontent.com/render/math?math=\nabla\phi=\vec{V}">
 
