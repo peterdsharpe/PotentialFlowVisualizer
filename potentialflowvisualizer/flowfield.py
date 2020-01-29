@@ -58,7 +58,7 @@ class Flowfield:
                 contours=dict(
                     start=min,
                     end=max,
-                    size=(max - min) / 20
+                    size=(max - min) / 40
                 ),
                 colorbar=dict(
                     title=scalar_to_plot,
