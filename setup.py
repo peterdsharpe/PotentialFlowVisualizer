@@ -136,8 +136,7 @@ setup(
     #
     # For an analysis of "install_requires" vs pip's requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
-    install_requires=['numpy >= 1.18',
-                      'plotly >= 4.5.0', ],
+    install_requires=['aerosandbox > 3.1.16'],
     # Optional
 
     # List additional groups of dependencies here (e.g. development
