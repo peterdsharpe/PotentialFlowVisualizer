@@ -45,8 +45,8 @@ class Flowfield:
 
         # min = np.min(scalar_to_plot_value)
         # max = np.max(scalar_to_plot_value)
-        min = np.nanpercentile(scalar_to_plot_value, 10)
-        max = np.nanpercentile(scalar_to_plot_value, 90)
+        min = np.nanpercentile(scalar_to_plot_value, 0)
+        max = np.nanpercentile(scalar_to_plot_value, 100)
 
         fig = go.Figure()
         fig.add_trace(
