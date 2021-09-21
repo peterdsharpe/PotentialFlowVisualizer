@@ -53,7 +53,7 @@ class Flowfield:
                 "alpha": 0.4
             }
         )
-        plt.axis("equal")
+        plt.gca().set_aspect("equal", adjustable='box')
         show_plot(
             f"Potential Flow: {scalar_to_plot}",
             "$x$",
