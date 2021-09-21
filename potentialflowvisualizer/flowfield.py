@@ -12,8 +12,7 @@ class Flowfield:
              scalar_to_plot:str="potential",  # "potential", "streamfunction", "xvel", "yvel", "velmag", "Cp"
              x_points: np.ndarray=np.linspace(-10, 10, 400),
              y_points: np.ndarray=np.linspace(-10, 10, 300),
-             min_percentile = 0.1,
-             max_percentile = 99.9,
+             percentiles_to_include = 99.7,
              show=True,
              ):
         X, Y = np.meshgrid(x_points, y_points)
@@ -41,8 +40,8 @@ class Flowfield:
         else:
             raise ValueError("Bad value of `scalar_to_plot`!")
 
-        min = np.nanpercentile(scalar_to_plot_value, min_percentile)
-        max = np.nanpercentile(scalar_to_plot_value, max_percentile)
+        min = np.nanpercentile(scalar_to_plot_value, 50 - percentiles_to_include / 2)
+        max = np.nanpercentile(scalar_to_plot_value, 50 + percentiles_to_include / 2)
 
         contour(
             x_points, y_points, scalar_to_plot_value.reshape(X.shape),
@@ -50,7 +49,8 @@ class Flowfield:
             linelabels=False,
             cmap=plt.get_cmap("rainbow"),
             contour_kwargs={
-                "linestyles": 'solid'
+                "linestyles": 'solid',
+                "alpha": 0.4
             }
         )
         plt.axis("equal")
