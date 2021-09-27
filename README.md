@@ -117,6 +117,10 @@ field.draw("streamfunction") # And visualize it
 ```
 ![Nonlifting NACA0020 at angle](media/nonlifting_NACA0020_at_angle.png)
 
+And, mix and match elements however you want!
+
+![Demo](media/demo.png)
+
 ## Potential Flow: A 30-second Crash Course
 Potential flow is a model of how fluids behave under certain mathematically-convenient assumptions. Potential flows can be described by a short, elegant equation:
 
