@@ -6,11 +6,11 @@
 ## PFV Description
 PotentialFlowVisualizer is a convenient Python library that can be used to quickly visualize various potential flow fields. If you're new to potential flows, I've written a short intro at the bottom of this document.
 
-PFV syntax is explicitly designed to be concise and readable. Rendering of flow fields happens through Plot.ly's beautiful visualization tools. This library is designed to have minimal dependencies - it requires just NumPy and Plotly. 
+PFV syntax is explicitly designed to be concise and readable.
 
 ## Installation
 
-Install with pip: `pip install potentialflowvisualizer`
+Install with: `pip install potentialflowvisualizer`
 
 ## Examples
 
