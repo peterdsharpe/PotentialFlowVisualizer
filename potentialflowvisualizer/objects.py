@@ -263,9 +263,14 @@ class LineSource(Singularity):
         yf = points_transformed[:, 1]
 
         x_vel = -self.strength / (4 * np.pi) * (
-                np.log(xf ** 2 - 2 * xf + yf ** 2 + 1)
-                - np.log(xf ** 2 + yf ** 2)
+                np.log(xf + yf * 1j) * 1j
+                - np.log(xf - 1 + yf * 1j) * 1j
+                - np.log(-xf + yf * 1j) * 1j
+                + np.log(1 - xf + yf * 1j) * 1j
         )
+
+        x_vel = np.real(x_vel)
+
         scalefactor = np.sqrt((self.x2 - self.x1) ** 2 + (self.y2 - self.y1) ** 2)
         x_vel /= scalefactor
 
@@ -282,14 +287,21 @@ class LineSource(Singularity):
         xf = points_transformed[:, 0]
         yf = points_transformed[:, 1]
 
-        y_vel = self.strength / (2 * np.pi) * (
-                np.arctan(xf / yf)
-                - np.arctan((xf - 1) / yf)
+        y_vel = self.strength / (4 * np.pi) * (
+                np.log(xf + yf * 1j)
+                - np.log(xf - 1 + yf * 1j)
+                + np.log(-xf + yf * 1j)
+                - np.log(1 - xf + yf * 1j)
         )
+
+        y_vel = np.real(y_vel)
+
         scalefactor = np.sqrt((self.x2 - self.x1) ** 2 + (self.y2 - self.y1) ** 2)
         y_vel /= scalefactor
 
         return y_vel
+
+
 
 
 class LineVortex(Singularity):
@@ -343,7 +355,7 @@ class LineVortex(Singularity):
         xf = points_transformed[:, 0]
         yf = points_transformed[:, 1]
 
-        streamfunction = self.strength / (2 * np.pi) * (
+        streamfunction = -self.strength / (2 * np.pi) * (
                 yf * (np.arctan(xf / yf) - np.arctan((xf - 1) / yf)) +
                 xf * np.log(xf ** 2 + yf ** 2) / 2 -
                 np.log(np.sqrt((xf - 1) ** 2 + yf ** 2)) * (xf - 1) - 1
@@ -362,15 +374,10 @@ class LineVortex(Singularity):
         xf = points_transformed[:, 0]
         yf = points_transformed[:, 1]
 
-        x_vel = -self.strength / (4 * np.pi) * (
-                np.log(xf + yf * 1j) * 1j
-                - np.log(xf - 1 + yf * 1j) * 1j
-                - np.log(-xf + yf * 1j) * 1j
-                + np.log(1 - xf + yf * 1j) * 1j
+        x_vel = self.strength / (4 * np.pi) * (
+                np.log(xf ** 2 - 2 * xf + yf ** 2 + 1)
+                - np.log(xf ** 2 + yf ** 2)
         )
-
-        x_vel = np.real(x_vel)
-
         scalefactor = np.sqrt((self.x2 - self.x1) ** 2 + (self.y2 - self.y1) ** 2)
         x_vel /= scalefactor
 
@@ -387,15 +394,10 @@ class LineVortex(Singularity):
         xf = points_transformed[:, 0]
         yf = points_transformed[:, 1]
 
-        y_vel = self.strength / (4 * np.pi) * (
-                np.log(xf + yf * 1j)
-                - np.log(xf - 1 + yf * 1j)
-                + np.log(-xf + yf * 1j)
-                - np.log(1 - xf + yf * 1j)
+        y_vel = -self.strength / (2 * np.pi) * (
+                np.arctan(xf / yf)
+                - np.arctan((xf - 1) / yf)
         )
-
-        y_vel = np.real(y_vel)
-
         scalefactor = np.sqrt((self.x2 - self.x1) ** 2 + (self.y2 - self.y1) ** 2)
         y_vel /= scalefactor
 
