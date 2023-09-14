@@ -1,10 +1,30 @@
 import numpy as np
+from abc import ABC, abstractmethod
+
+
+class Singularity(ABC):
+
+    @abstractmethod
+    def get_potential_at(self, points: np.ndarray):
+        pass
+
+    @abstractmethod
+    def get_streamfunction_at(self, points: np.ndarray):
+        pass
+
+    @abstractmethod
+    def get_x_velocity_at(self, points: np.ndarray):
+        pass
+
+    @abstractmethod
+    def get_y_velocity_at(self, points: np.ndarray):
+        pass
 
 
 ### For all classes:
 # points is a Nx2 NumPy array of the points you want to evaluate something at.
 
-class Freestream:
+class Freestream(Singularity):
     def __init__(self,
                  u,
                  v,
@@ -25,7 +45,7 @@ class Freestream:
         return self.v * np.ones_like(points[:, 0])
 
 
-class Source:
+class Source(Singularity):
     def __init__(self,
                  strength,
                  x,  # x-location
@@ -60,7 +80,7 @@ class Source:
         )
 
 
-class Vortex:
+class Vortex(Singularity):
     def __init__(self,
                  strength,
                  x,  # x-location
@@ -95,7 +115,7 @@ class Vortex:
         )
 
 
-class Doublet:
+class Doublet(Singularity):
     def __init__(self,
                  strength,
                  x,  # x-location
@@ -156,7 +176,7 @@ class Doublet:
                ) ** 2
 
 
-class LineSource:
+class LineSource(Singularity):
     def __init__(self,
                  strength,
                  x1,  # x-location of start
@@ -256,7 +276,7 @@ class LineSource:
         return y_vel
 
 
-class LineVortex:
+class LineVortex(Singularity):
     def __init__(self,
                  strength,
                  x1,  # x-location of start
