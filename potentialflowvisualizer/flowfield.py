@@ -133,8 +133,8 @@ class Flowfield:
             p.equal()
 
         p.show_plot(
-            "Potential Flow Simulation of Room Flow",
-            r"$x$ [m]",
-            r"$y$ [m]",
+            f"Potential Flow: Streamlines",
+            "$x$",
+            "$y$",
             show=show
         )
