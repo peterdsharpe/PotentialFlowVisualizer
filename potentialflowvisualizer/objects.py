@@ -32,16 +32,16 @@ class Freestream(Singularity):
         self.u = u
         self.v = v
 
-    def get_potential_at(self, points):
+    def get_potential_at(self, points: np.ndarray):
         return self.u * points[:, 0] + self.v * points[:, 1]
 
-    def get_streamfunction_at(self, points):
+    def get_streamfunction_at(self, points: np.ndarray):
         return -self.v * points[:, 0] + self.u * points[:, 1]
 
-    def get_x_velocity_at(self, points):
+    def get_x_velocity_at(self, points: np.ndarray):
         return self.u * np.ones_like(points[:, 0])
 
-    def get_y_velocity_at(self, points):
+    def get_y_velocity_at(self, points: np.ndarray):
         return self.v * np.ones_like(points[:, 0])
 
 
@@ -55,25 +55,25 @@ class Source(Singularity):
         self.x = x
         self.y = y
 
-    def get_potential_at(self, points):
+    def get_potential_at(self, points: np.ndarray):
         return self.strength / (2 * np.pi) * np.log(np.sqrt(
             (points[:, 0] - self.x) ** 2 +
             (points[:, 1] - self.y) ** 2
         ))
 
-    def get_streamfunction_at(self, points):
+    def get_streamfunction_at(self, points: np.ndarray):
         return self.strength / (2 * np.pi) * np.arctan2(
             points[:, 1] - self.y,
             points[:, 0] - self.x
         )
 
-    def get_x_velocity_at(self, points):
+    def get_x_velocity_at(self, points: np.ndarray):
         return self.strength / (2 * np.pi) * (points[:, 0] - self.x) / (
                 (points[:, 0] - self.x) ** 2 +
                 (points[:, 1] - self.y) ** 2
         )
 
-    def get_y_velocity_at(self, points):
+    def get_y_velocity_at(self, points: np.ndarray):
         return self.strength / (2 * np.pi) * (points[:, 1] - self.y) / (
                 (points[:, 0] - self.x) ** 2 +
                 (points[:, 1] - self.y) ** 2
@@ -90,25 +90,25 @@ class Vortex(Singularity):
         self.x = x
         self.y = y
 
-    def get_potential_at(self, points):
+    def get_potential_at(self, points: np.ndarray):
         return self.strength / (2 * np.pi) * np.arctan2(
             points[:, 1] - self.y,
             points[:, 0] - self.x
         )
 
-    def get_streamfunction_at(self, points):
+    def get_streamfunction_at(self, points: np.ndarray):
         return self.strength / (2 * np.pi) * np.log(np.sqrt(
             (points[:, 0] - self.x) ** 2 +
             (points[:, 1] - self.y) ** 2
         ))
 
-    def get_x_velocity_at(self, points):
+    def get_x_velocity_at(self, points: np.ndarray):
         return self.strength / (2 * np.pi) * -(points[:, 1] - self.y) / (
                 (points[:, 0] - self.x) ** 2 +
                 (points[:, 1] - self.y) ** 2
         )
 
-    def get_y_velocity_at(self, points):
+    def get_y_velocity_at(self, points: np.ndarray):
         return self.strength / (2 * np.pi) * (points[:, 0] - self.x) / (
                 (points[:, 0] - self.x) ** 2 +
                 (points[:, 1] - self.y) ** 2
@@ -127,25 +127,25 @@ class Doublet(Singularity):
         self.y = y
         self.alpha = alpha
 
-    def get_potential_at(self, points):
+    def get_potential_at(self, points: np.ndarray):
         return -self.strength / (2 * np.pi) * (
                 (points[:, 0] - self.x) * np.cos(self.alpha) +
                 (points[:, 1] - self.y) * np.sin(self.alpha)
         ) / (
-                       (points[:, 0] - self.x) ** 2 +
-                       (points[:, 1] - self.y) ** 2
-               )
+                (points[:, 0] - self.x) ** 2 +
+                (points[:, 1] - self.y) ** 2
+        )
 
-    def get_streamfunction_at(self, points):
+    def get_streamfunction_at(self, points: np.ndarray):
         return self.strength / (2 * np.pi) * (
                 (points[:, 0] - self.x) * np.sin(self.alpha) +
                 (points[:, 1] - self.y) * np.cos(self.alpha)
         ) / (
-                       (points[:, 0] - self.x) ** 2 +
-                       (points[:, 1] - self.y) ** 2
-               )
+                (points[:, 0] - self.x) ** 2 +
+                (points[:, 1] - self.y) ** 2
+        )
 
-    def get_x_velocity_at(self, points):
+    def get_x_velocity_at(self, points: np.ndarray):
         return -self.strength / (2 * np.pi) * (
                 (
                         (points[:, 0] - self.x) ** 2 +
@@ -156,11 +156,11 @@ class Doublet(Singularity):
                         (points[:, 1] - self.y) * np.sin(self.alpha)
                 )
         ) / (
-                       (points[:, 0] - self.x) ** 2 +
-                       (points[:, 1] - self.y) ** 2
-               ) ** 2
+                (points[:, 0] - self.x) ** 2 +
+                (points[:, 1] - self.y) ** 2
+        ) ** 2
 
-    def get_y_velocity_at(self, points):
+    def get_y_velocity_at(self, points: np.ndarray):
         return -self.strength / (2 * np.pi) * (
                 (
                         (points[:, 0] - self.x) ** 2 +
@@ -171,9 +171,9 @@ class Doublet(Singularity):
                         (points[:, 1] - self.y) * np.sin(self.alpha)
                 )
         ) / (
-                       (points[:, 0] - self.x) ** 2 +
-                       (points[:, 1] - self.y) ** 2
-               ) ** 2
+                (points[:, 0] - self.x) ** 2 +
+                (points[:, 1] - self.y) ** 2
+        ) ** 2
 
 
 class LineSource(Singularity):
@@ -190,7 +190,7 @@ class LineSource(Singularity):
         self.x2 = x2
         self.y2 = y2
 
-    def get_potential_at(self, points):
+    def get_potential_at(self, points: np.ndarray):
         A = np.array([
             [self.x2 - self.x1, self.y2 - self.y1],
             [self.y1 - self.y2, self.x2 - self.x1]
@@ -209,7 +209,7 @@ class LineSource(Singularity):
 
         return potential
 
-    def get_streamfunction_at(self, points):
+    def get_streamfunction_at(self, points: np.ndarray):
         A = np.array([
             [self.x2 - self.x1, self.y2 - self.y1],
             [self.y1 - self.y2, self.x2 - self.x1]
@@ -235,7 +235,7 @@ class LineSource(Singularity):
 
         return streamfunction
 
-    def get_x_velocity_at(self, points):
+    def get_x_velocity_at(self, points: np.ndarray):
         A = np.array([
             [self.x2 - self.x1, self.y2 - self.y1],
             [self.y1 - self.y2, self.x2 - self.x1]
@@ -255,7 +255,7 @@ class LineSource(Singularity):
 
         return x_vel
 
-    def get_y_velocity_at(self, points):
+    def get_y_velocity_at(self, points: np.ndarray):
         A = np.array([
             [self.x2 - self.x1, self.y2 - self.y1],
             [self.y1 - self.y2, self.x2 - self.x1]
@@ -290,7 +290,7 @@ class LineVortex(Singularity):
         self.x2 = x2
         self.y2 = y2
 
-    def get_potential_at(self, points):
+    def get_potential_at(self, points: np.ndarray):
         A = np.array([
             [self.x2 - self.x1, self.y2 - self.y1],
             [self.y1 - self.y2, self.x2 - self.x1]
@@ -316,7 +316,7 @@ class LineVortex(Singularity):
 
         return potential
 
-    def get_streamfunction_at(self, points):
+    def get_streamfunction_at(self, points: np.ndarray):
         A = np.array([
             [self.x2 - self.x1, self.y2 - self.y1],
             [self.y1 - self.y2, self.x2 - self.x1]
@@ -335,7 +335,7 @@ class LineVortex(Singularity):
 
         return streamfunction
 
-    def get_x_velocity_at(self, points):
+    def get_x_velocity_at(self, points: np.ndarray):
         A = np.array([
             [self.x2 - self.x1, self.y2 - self.y1],
             [self.y1 - self.y2, self.x2 - self.x1]
@@ -360,7 +360,7 @@ class LineVortex(Singularity):
 
         return x_vel
 
-    def get_y_velocity_at(self, points):
+    def get_y_velocity_at(self, points: np.ndarray):
         A = np.array([
             [self.x2 - self.x1, self.y2 - self.y1],
             [self.y1 - self.y2, self.x2 - self.x1]
