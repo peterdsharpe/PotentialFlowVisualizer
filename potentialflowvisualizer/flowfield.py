@@ -93,8 +93,6 @@ class Flowfield:
                          set_equal: bool = True,
                          show: bool = True,
                          ):
-        if cmap is None:
-            cmap = "turbo"
 
         X, Y = np.meshgrid(x_points, y_points)
         U = np.reshape(
@@ -116,6 +114,16 @@ class Flowfield:
 
         import matplotlib.pyplot as plt
         import aerosandbox.tools.pretty_plots as p
+
+        if cmap is None:
+            cmap = "coolwarm_r"
+
+        if norm is None:
+            from matplotlib.colors import LogNorm
+            norm = LogNorm(
+                np.quantile(velmag, 0.05),
+                np.quantile(velmag, 0.95)
+            )
 
         plt.streamplot(
             X, Y, U, V,
