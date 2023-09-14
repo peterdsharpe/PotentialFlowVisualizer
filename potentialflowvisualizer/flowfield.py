@@ -1,11 +1,16 @@
 import aerosandbox as asb
 import aerosandbox.numpy as np
-from aerosandbox.tools.pretty_plots import plt, show_plot, contour, mpl
+from potentialflowvisualizer.objects import Singularity
+from typing import List
+
 
 class Flowfield:
     def __init__(self,
-                 objects=[]
+                 objects: List[Singularity] = None
                  ):
+        if objects is None:
+            objects = []
+
         self.objects = objects
 
     def get_potential_at(self, points: np.ndarray):
