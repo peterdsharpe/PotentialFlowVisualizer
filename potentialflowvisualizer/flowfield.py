@@ -8,6 +8,18 @@ class Flowfield:
                  ):
         self.objects = objects
 
+    def get_potential_at(self, points: np.ndarray):
+        return sum([object.get_potential_at(points) for object in self.objects])
+
+    def get_streamfunction_at(self, points: np.ndarray):
+        return sum([object.get_streamfunction_at(points) for object in self.objects])
+
+    def get_x_velocity_at(self, points: np.ndarray):
+        return sum([object.get_x_velocity_at(points) for object in self.objects])
+
+    def get_y_velocity_at(self, points: np.ndarray):
+        return sum([object.get_y_velocity_at(points) for object in self.objects])
+
     def draw(self,
              scalar_to_plot:str="potential",  # "potential", "streamfunction", "xvel", "yvel", "velmag", "Cp"
              x_points: np.ndarray=np.linspace(-10, 10, 400),
