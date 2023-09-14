@@ -97,7 +97,7 @@ class Vortex(Singularity):
         )
 
     def get_streamfunction_at(self, points: np.ndarray):
-        return self.strength / (2 * np.pi) * np.log(np.sqrt(
+        return -self.strength / (2 * np.pi) * np.log(np.sqrt(
             (points[:, 0] - self.x) ** 2 +
             (points[:, 1] - self.y) ** 2
         ))
