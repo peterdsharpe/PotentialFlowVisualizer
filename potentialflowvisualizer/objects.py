@@ -116,6 +116,22 @@ class Vortex(Singularity):
 
 
 class Doublet(Singularity):
+    """
+    Note that there are differing sign conventions for doublet strength in the literature.
+
+    Consider the case of a unit-strength doublet, at the origin (0, 0), facing "to the right" (alpha = 0).
+
+    We use the "MIT convention", where a positive strength induces a flow to right along the doublet axis (the "core"). So,
+    points on the x-axis itself will have an induced velocity in the +x direction. Points far from the doublet axis (on "the donut") will in general
+    have induced velocity in the -x direction. See a diagram of the MIT convention:
+        > https://web.mit.edu/fluids-modules/www/potential_flows/LecturesHTML/lec1011/node24.html
+
+    The alternative is the "Cambridge convention", where this is flipped:
+        > http://www-mdp.eng.cam.ac.uk/web/library/enginfo/aerothermal_dvd_only/aero/fprops/poten/node33.html
+
+    We use the MIT convention in this code implementation, but either convention is fine as long as you're consistent.
+    """
+
     def __init__(self,
                  strength,
                  x,  # x-location
