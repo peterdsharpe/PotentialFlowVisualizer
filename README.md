@@ -124,11 +124,11 @@ And, mix and match elements however you want!
 ## Potential Flow: A 30-second Crash Course
 Potential flow is a model of how fluids behave under certain mathematically-convenient assumptions. Potential flows can be described by a short, elegant equation:
 
-<img src="https://render.githubusercontent.com/render/math?math=\nabla^2\phi=0">
+$$\nabla^2\phi=0$$
 
-Here, <img src="https://render.githubusercontent.com/render/math?math=\phi"> is a scalar that represents the "velocity potential" at a given point - we use the word "potential", because it's sort of analogous to potential energy or a voltage potential. To find the fluid's velocity at a point, we look at the derivatives of the potential at that point:
+Here, $\phi$ is a scalar that represents the "velocity potential" at a given point - we use the word "potential", because it's sort of analogous to potential energy or a voltage potential. To find the fluid's velocity at a point, we look at the derivatives of the potential at that point:
 
-<img src="https://render.githubusercontent.com/render/math?math=\nabla\phi=\vec{V}">
+$$\nabla\phi=\vec{V}$$
 
 There are a few "fundamental solutions" to this governing equation - a few of these are shown below. The governing equation is linear, so we can superimpose various fundamental solutions until we obtain a flowfield that describes some physically-relevant situation.
 
